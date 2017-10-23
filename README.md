@@ -1,4 +1,9 @@
-# My-Simple-Programs
+#Some Practice programs in various languages
+
+<b>Languages Included</b>
+_C_
+_Python_
+_C++_
 
 `#String` sets a title the above one   
 `**String**` sets the **String** in bold   
