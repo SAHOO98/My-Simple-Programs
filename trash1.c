@@ -1,19 +1,26 @@
+/* Pointer Testing
+Teting Satus:- True*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-void foo(char *t,char **out){
-  out[0] = (char *)malloc(strlen(t)*sizeof(char));
-  out[1] = (char *)malloc(strlen(t)*sizeof(char));
-  out[0] = "jfnldjfdl";
-  out[1] = "ffrgdgfd";
+char ** foo(){
+char **o;
+o = (char**)malloc(2*sizeof(char*));
+o[0] = (char *)malloc(10*sizeof(char));
+o[1] = (char *)malloc(10*sizeof(char));
 
+o[0] = "Saptarshi";
+o[1] = "Sahoo";
+
+return o;
 }
 
-int main(){
-  char *out[2];
-  char inp[]="Hello World!!";
-  foo(inp,out);
-  printf("%s\n%s",out[0],out[1]);
+int main() {
+  char **O;
+  O = foo();
+  printf("%s\n%s\n",O[0],O[1]);
+  free(O);
   return 0;
 }
