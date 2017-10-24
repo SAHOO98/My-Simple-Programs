@@ -2,19 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 
-//#define OR ||
 #define AND &&
-
-char** split(char* in){
+/*in -> string to split
+delim ->deliminator
+len -> lenght of the returing string array  */
+char** split(char* in,char delim ,int * len){
   char **out,*x,*y,temp[strlen(in)];
   int space,i,j;
   space = 0;
   y = x = in;
    for(;*x!='\0';x++){
-     if (*x == ' ')
+     if (*x == delim)
       space++;
    }
    space++;
+    *len = space;
    out = (char**)malloc(space*sizeof(char *));
    for(i =0;i<space;i++){
      out[i] = (char*)malloc(strlen(in)*sizeof(char));
@@ -22,7 +24,7 @@ char** split(char* in){
    i = 0;
    j = 0;
    while(1){
-     if (*y!=' ' AND *y!='\0'){
+     if (*y!=delim AND *y!='\0'){
        temp[i] = *y;
        i++;
      }else{
@@ -40,10 +42,14 @@ char** split(char* in){
 int main()
 {
     char **out;
-    char inp[] = "HEllo World";
-
-    out = split(inp);
-    printf("%s\n%s\n",out[0],out[1]);
+    int i,len=0;
+  //custom input
+    char inp[] = "My";
+    out = split(inp,' ',&len);
+    //printf("%d\n",len);
+    for(i=0;i<len;i++)
+      printf("%s\n",out[i]);
     free(out);
+
     return 0;
 }
